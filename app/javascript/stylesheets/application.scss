@@ -1,1 +1,19 @@
 @import "bootstrap";
+
+/* form */
+
+.form-box {
+  margin-left: auto;
+  margin-right: auto;
+  width: 30em;
+  h2 {
+    text-align: center;
+  }
+}
+
+.simple_form {
+  .string {
+    width: 30em;
+  }
+
+}
