@@ -35,6 +35,14 @@ class CouriersController < ApplicationController
     end
   end
 
+  def destroy
+    @courier = Courier.find(params[:id])
+    @courier.destroy
+    flash[:success] = "Task deleted"
+    redirect_to root_path
+  end
+
+
   private
 
   def courier_params

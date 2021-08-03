@@ -1,0 +1,13 @@
+<%= simple_form_for @courier do |f| %>
+
+  <%= f.error_notification %>
+
+  <%= f.input :name %>
+
+  <%= f.input :email, input_html: { autocomplete: 'email' } %><br>
+
+  <div class="d-grid gap-2">
+    <%= f.button :submit, class: "btn btn-outline-success" %>
+  </div>
+
+<% end %>
