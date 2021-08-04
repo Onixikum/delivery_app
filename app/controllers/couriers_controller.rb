@@ -1,10 +1,14 @@
 class CouriersController < ApplicationController
+
   def index
     @couriers = Courier.paginate(page: params[:page], per_page: 20)
   end
 
   def show
     @courier = Courier.find(params[:id])
+    @package = Package.new
+    @packages_in_work = correct_courier.packages.in_work.paginate(page: params[:page], per_page: 5)
+    @packages_done = correct_courier.packages.done.all
   end
 
   def new
@@ -42,10 +46,13 @@ class CouriersController < ApplicationController
     redirect_to root_path
   end
 
-
   private
 
   def courier_params
     params.require(:courier).permit(:name, :email)
+  end
+
+  def correct_courier
+    @courier = Courier.find_by(id: params[:id])
   end
 end

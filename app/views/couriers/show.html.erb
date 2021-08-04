@@ -1,2 +1,44 @@
-<%= @courier.name %><br>
-<%= @courier.email %>
+<h3><%= @courier.name %><br></h3>
+<h5><%= @courier.email %></h5>
+
+<div class="form-box">
+  <%= simple_form_for @package, as: :package, method: :post, url: courier_packages_path(courier_id: @courier.id) do |f| %>
+
+    <%= f.error_notification %>
+
+    <%= f.input :tracking_number %><br>
+
+    <div class="d-grid gap-2">
+      <%= f.button :submit, class: "btn btn-outline-success" %>
+    </div>
+
+  <% end %>
+</div><br>
+
+<ul class="list-group">
+  <% @packages_in_work.each do |package| %>
+
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+  <%= "#{package.tracking_number}" %>
+  <span>
+    <%= link_to "To complete", package_status_complite_path(package_id: package.id), class: "btn btn-success btn-sm" %>
+  </span>
+</li>
+<% end %>
+</ul><br>
+
+<div class="digg_pagination d-flex justify-content-center">
+  <%= will_paginate @packages_in_work %>
+</div><br>
+
+<ul class="list-group">
+  <% @packages_done.each do |package| %>
+
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+  <%= "#{package.tracking_number}" %>
+  <span>
+    done
+  </span>
+</li>
+<% end %>
+</ul><br>
