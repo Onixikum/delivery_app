@@ -1,4 +1,6 @@
 class Courier < ApplicationRecord
+  has_many :packages, dependent: :destroy
+
   before_save { email.downcase! }
 
   validates :name, presence: true, length: { in: 2..25 }
