@@ -1,3 +1,9 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root   'couriers#index'
+
+  resources :couriers, shallow: true do
+    resources :packages, only: [:create] do
+      get :status_complite
+    end
+  end
 end

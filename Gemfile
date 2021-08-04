@@ -7,9 +7,12 @@ gem 'rails', '6.1.4'
 gem 'pg', '1.2.3'
 gem 'puma', '5.4.0'
 gem 'sass-rails', '6.0.0'
+gem 'simple_form', '5.1.0'
 gem 'webpacker', '5.4.0'
+gem 'will_paginate', '3.3.0'
 gem 'turbolinks', '5.2.1'
 gem 'jbuilder', '2.11.2'
+gem 'faker', '2.18.0'
 gem 'bootsnap', '1.7.7', require: false
 
 group :development, :test do
